@@ -12,8 +12,8 @@ function Hero({ miniHero }) {
   return (
     <div className={classes}>
       <div className="hero-body text-center text-light">
-        <h1>Premium Property Finder</h1>
-        <p className="mb-0">Bringing premium property right to your fingertips</p>
+        <h1>Scraye</h1>
+        <p className="mb-0">The simple way to rent</p>
       </div>
     </div>
   )
