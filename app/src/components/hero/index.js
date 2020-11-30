@@ -1,9 +1,13 @@
-import React from 'react';
-import classnames from 'classnames';
-import styles from './styles.module.css';
+import React from 'react'
+import classnames from 'classnames'
+import styles from './styles.module.css'
 
-function Hero() {
-  const classes = classnames('hero', 'hero-lg', 'mb-3', styles.hero);
+function Hero({ miniHero }) {
+  const classes = classnames(styles.hero, 'hero', 'mb-3', {
+    'hero-sm': miniHero,
+    [styles.miniHero]: miniHero,
+    'hero-lg': !miniHero
+  })
 
   return (
     <div className={classes}>
