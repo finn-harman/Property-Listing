@@ -8,8 +8,7 @@ In order to get the project up and running:
 
 ```
 $ git clone https://github.com/finn-harman/Property-Listing.git
-$ cd Property-Listing
-$ cd app
+$ cd Property-Listing/app
 $ npm install
 $ npm start
 ```
