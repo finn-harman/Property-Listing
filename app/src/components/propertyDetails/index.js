@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import KeyFeatures from '../keyFeatures';
 import Gallery from '../gallery';
 import LikeButton from '../likeButton';
+import EditButton from '../editButton';
 
 function PropertyDetails({ listing }) {
   if (!listing) {
@@ -42,6 +43,8 @@ function PropertyDetails({ listing }) {
       {details.map(detail => (
         <p key={detail}>{detail}</p>
       ))}
+      <p className='text-bold mt-3'>Edit Fields</p>
+      <EditButton />
     </div>
   );
 }
