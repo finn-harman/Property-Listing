@@ -1,12 +1,12 @@
-class LikeButton extends React.Component {
-  state = {
-    likes: 0;
-  }
+import React from 'react';
+import HeartIcon from '../heartIcon';
 
-  addLike = () => {
-    let newCount = this.state.likes + 1;
-  }
-  render() {
-    return <button>A button!</button>
-  }
+function LikeButton(props) {
+  return (
+    <button className="btn btn-action s-circle float-right" onClick={props.onLike}>
+      <HeartIcon liked={props.liked}/>
+    </button>
+  )
 }
+
+export default LikeButton;

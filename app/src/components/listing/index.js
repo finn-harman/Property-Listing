@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-function Listing( { listing } ) {
-  if (!listing) {
+import LikeButton from '../likeButton';
+
+function Listing(props) {
+  if (!props.listing) {
     return null;
   }
 
-  const { id, image, title, address, description, price, dateAvailable } = listing;
+  const { id, image, title, address, description, price, dateAvailable } = props.listing;
   const columnClasses = classnames('column', 'col-4', 'col-xs-12');
 
   return (
@@ -26,12 +26,16 @@ function Listing( { listing } ) {
         <div className='card-body'>Date available: {dateAvailable}</div>
         <div className='card-body'>{description}</div>
         <div className='card-footer'>
-          <Link className="btn btn-primary" to={`/details/${id}`}>
+          <Link className="btn btn-primary" to={{
+            pathname: `/details/${id}`,
+            state: {
+              liked: props.liked,
+            }
+
+          }}>
             View
           </Link>
-          <button class="btn btn-action s-circle float-right">
-            <FontAwesomeIcon icon={faHeart} />
-          </button>
+          <LikeButton liked={props.liked} onLike={() => props.onLike(props.index)}/>
         </div>
       </div>
     </div>
