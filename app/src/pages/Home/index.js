@@ -7,31 +7,15 @@ import {
 import Listing from '../../components/listing';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    const storedLikeArray = localStorage.getItem('likeArray');
-    if (storedLikeArray) {
-      this.state = {
-        likeArray: JSON.parse(storedLikeArray),
-      }
-    } else {
-      this.state = {
-        likeArray: Array(6).fill(false),
-      }
+
+  setLikeStatus(id) {
+    const likeStatus = localStorage.getItem(`${id}`)
+    if (!likeStatus) {
+      localStorage.setItem(`${id}`, JSON.stringify(false));
     }
   }
 
-  handleLike(i) {
-    const current = this.state.likeArray.slice();
-    current[i] = !current[i];
-    this.setState({
-      likeArray: current,
-    })
-    localStorage.setItem('likeArray', JSON.stringify(current));
-  }
-
   render() {
-    const current = this.state.likeArray;
     var self = this;
     return (
       <React.Fragment>
@@ -43,13 +27,11 @@ class Home extends React.Component {
                 const { allListings } = value;
                 return (
                   <div className='columns'>
-                    {allListings.map((listing, index) => (
+                    {allListings.map((listing) => (
+                      self.setLikeStatus(listing.address),
                       <Listing
                         listing={listing}
-                        key={index}
-                        liked={current[index]}
-                        onLike={(i) => self.handleLike(i)}
-                        index={index}
+                        key={listing.address}
                       />
                     ))}
                   </div>

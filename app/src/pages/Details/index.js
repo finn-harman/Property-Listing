@@ -11,8 +11,7 @@ import Hero from '../../components/hero';
 
 function Details(props) {
   let { propertyId } = useParams();
-  // let { liked, onLike } = props.location.state;
-  console.log(props.location.state.liked)
+
   return (
     <React.Fragment>
       <Hero miniHero />

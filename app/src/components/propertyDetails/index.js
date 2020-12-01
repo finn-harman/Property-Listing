@@ -2,8 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 
 import KeyFeatures from '../keyFeatures';
-import Map from '../map';
 import Gallery from '../gallery';
+import LikeButton from '../likeButton';
 
 function PropertyDetails({ listing }) {
   if (!listing) {
@@ -17,12 +17,13 @@ function PropertyDetails({ listing }) {
     <div>
       <div className='columns'>
         <div className='column col-9 col-xs-12'>
+          <LikeButton id={address}/>
           <h2>{title}</h2>
           <h3 className='text-dark text-small mb-1'>{description}</h3>
         </div>
         <div className='column col-3 col-xs-12'>
           <h5 className={priceClasses}>
-            <small>Priced from</small>
+            <small>Price: </small>
             <br />
             &pound;
             {price}
@@ -41,8 +42,6 @@ function PropertyDetails({ listing }) {
       {details.map(detail => (
         <p key={detail}>{detail}</p>
       ))}
-      <p className='text-bold mt-3'>Map</p>
-      <Map address={address} />
     </div>
   );
 }

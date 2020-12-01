@@ -26,16 +26,10 @@ function Listing(props) {
         <div className='card-body'>Date available: {dateAvailable}</div>
         <div className='card-body'>{description}</div>
         <div className='card-footer'>
-          <Link className="btn btn-primary" to={{
-            pathname: `/details/${id}`,
-            state: {
-              liked: props.liked,
-            }
-
-          }}>
+          <Link className="btn btn-primary" to={`/details/${id}`}>
             View
           </Link>
-          <LikeButton liked={props.liked} onLike={() => props.onLike(props.index)}/>
+          <LikeButton id={address}/>
         </div>
       </div>
     </div>
